@@ -1,0 +1,109 @@
+:root {
+  --bg: #f5f0e6;
+  --card: #fffdf8;
+  --text: #2b2724;
+  --muted: #6f6760;
+  --accent: #800020;
+  --rule: #e6ded0;
+  --terracotta: #c76142;
+  --ochre: #d9a645;
+  --sage: #7d9e78;
+  --slate: #5c809e;
+  --plum: #7d4f7a;
+  --teal: #408a8c;
+  --rose: #c97a8a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1a18;
+    --card: #262320;
+    --text: #f2ede4;
+    --muted: #b3aa9e;
+    --accent: #cd5767;
+    --rule: #3a3530;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 56px 20px 72px;
+}
+
+.wordmark {
+  font: 700 44px/1 ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  display: inline-block;
+}
+.wordmark span:nth-child(1) { color: var(--terracotta); }
+.wordmark span:nth-child(2) { color: var(--ochre); }
+.wordmark span:nth-child(3) { color: var(--sage); }
+.wordmark span:nth-child(4) { color: var(--slate); }
+.wordmark span:nth-child(5) { color: var(--plum); }
+.wordmark span:nth-child(6) { color: var(--teal); }
+.wordmark span:nth-child(7) { color: var(--rose); }
+.wordmark span:nth-child(8) { color: var(--accent); }
+
+.strip {
+  display: flex;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 20px 0 36px;
+  max-width: 320px;
+}
+.strip i { flex: 1; }
+
+.tagline {
+  color: var(--muted);
+  font-size: 20px;
+  margin: 12px 0 0;
+}
+
+h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; }
+h2 { font-size: 19px; margin: 32px 0 6px; }
+p, li { color: var(--text); }
+.muted { color: var(--muted); }
+
+a { color: var(--accent); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 8px 24px 24px;
+  margin-top: 28px;
+}
+
+nav {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 15px;
+}
+
+.button {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 999px;
+  margin-top: 8px;
+}
