@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Paletto look</title>
+  <meta name="description" content="Open this look in Paletto to frame your own photo the same way.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <a class="wordmark" href="./" aria-label="paletto."><span>p</span><span>a</span><span>l</span><span>e</span><span>t</span><span>t</span><span>o</span><span>.</span></a>
+  <p class="tagline" id="caption">Someone sent you a look.</p>
+  <div class="strip" id="strip" aria-hidden="true"></div>
+
+  <h1>Open it in Paletto</h1>
+  <p class="muted">Tap below and your next photo in Paletto starts with this look: the same frame, swatches, film and typeface.</p>
+  <div class="card">
+    <a class="button" id="open" href="#">Open in Paletto</a>
+    <p class="muted">Don't have Paletto yet? <a id="store" href="https://apps.apple.com/app/id6827217518">Get it on the App Store</a>, then come back to this link.</p>
+  </div>
+
+  <nav>
+    <a href="./">Support</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
+</main>
+<script>
+  // The look rides in the fragment (never sent to a server). Show its palette and caption,
+  // and point the button at the app's own URL scheme.
+  (function () {
+    var data = location.hash.slice(1);
+    if (!data) return;
+    document.getElementById('open').href = 'paletto://look?d=' + data;
+    try {
+      var json = JSON.parse(atob(data.replace(/-/g, '+').replace(/_/g, '/')));
+      var strip = document.getElementById('strip');
+      (json.hexes || []).forEach(function (hex) {
+        var i = document.createElement('i'); i.style.background = hex; strip.appendChild(i);
+      });
+      if (json.caption) document.getElementById('caption').textContent = '“' + json.caption + '”';
+    } catch (e) {}
+  })();
+</script>
+</body>
+</html>
