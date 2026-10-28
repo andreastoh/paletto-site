@@ -33,7 +33,9 @@
     if (!data) return;
     document.getElementById('open').href = 'paletto://look?d=' + data;
     try {
-      var json = JSON.parse(atob(data.replace(/-/g, '+').replace(/_/g, '/')));
+      // base64url → bytes → UTF-8, so captions with accents or emoji read correctly.
+      var bytes = Uint8Array.from(atob(data.replace(/-/g, '+').replace(/_/g, '/')), function (c) { return c.charCodeAt(0); });
+      var json = JSON.parse(new TextDecoder().decode(bytes));
       var strip = document.getElementById('strip');
       (json.hexes || []).forEach(function (hex) {
         var i = document.createElement('i'); i.style.background = hex; strip.appendChild(i);
